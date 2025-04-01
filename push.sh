@@ -36,7 +36,7 @@ az containerapp create \
     --revision-suffix "$TAG" \
     --registry-username "$ACR_USERNAME" \
     --registry-password "$ACR_PASSWORD" \
-    --registry-server "$ACR_REGISTRY_NAME" \
+    --registry-server "$ACR_NAME" \
     --min-replicas "$SCALE_MIN_REPLICAS" \
     --max-replicas "$SCALE_MAX_REPLICAS" \
     --target-port 8443 \
