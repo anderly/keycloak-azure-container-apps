@@ -30,8 +30,8 @@ function Dot-Env {
 dotenv -type Regular
 
 $LOCAL_TAG_NAME="${REGISTRY_NAME}/${IMAGE_NAME}:${tag}"
-$CR_IMAGE_TAG="${ACR_REGISTRY_NAME}/${LOCAL_TAG_NAME}"
-$CR_IMAGE_LATEST="${ACR_REGISTRY_NAME}/${REGISTRY_NAME}/${IMAGE_NAME}:latest"
+$CR_IMAGE_TAG="${ACR_NAME}/${LOCAL_TAG_NAME}"
+$CR_IMAGE_LATEST="${ACR_NAME}/${REGISTRY_NAME}/${IMAGE_NAME}:latest"
 
 docker build ./ -t $LOCAL_TAG_NAME
 
@@ -42,7 +42,7 @@ docker push $CR_IMAGE_TAG
 
 Write-Output "Creating container app: $CONTAINER_APP_NAME ($CR_IMAGE_TAG)"
 
-az acr login --name $ACR_REGISTRY_NAME
+az acr login --name $ACR_NAME
 
 az containerapp create `
     --name "$CONTAINER_APP_NAME" `

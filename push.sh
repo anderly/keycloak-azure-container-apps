@@ -13,8 +13,8 @@ fi
 
 # Set image tags
 LOCAL_TAG_NAME="$REGISTRY_NAME/$IMAGE_NAME:$TAG"
-CR_IMAGE_TAG="$ACR_REGISTRY_NAME/$LOCAL_TAG_NAME"
-CR_IMAGE_LATEST="$ACR_REGISTRY_NAME/$REGISTRY_NAME/$IMAGE_NAME:latest"
+CR_IMAGE_TAG="$ACR_NAME/$LOCAL_TAG_NAME"
+CR_IMAGE_LATEST="$ACR_NAME/$REGISTRY_NAME/$IMAGE_NAME:latest"
 
 # Build and push Docker image
 docker build ./ -t $LOCAL_TAG_NAME
@@ -25,7 +25,7 @@ docker push $CR_IMAGE_TAG
 
 echo "Creating container app: $CONTAINER_APP_NAME ($CR_IMAGE_TAG)"
 
-az acr login --name $REGISTRY_NAME
+az acr login --name $ACR_NAME
 
 # Create container app
 az containerapp create \
