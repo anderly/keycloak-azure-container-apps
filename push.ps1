@@ -47,7 +47,7 @@ az acr login --name $ACR_NAME
 az containerapp create `
     --name "$CONTAINER_APP_NAME" `
     --resource-group "$RESOURCE_GROUP" `
-    --environment "$CONTAINNER_APP_ENVIRONMENT" `
+    --environment "$CONTAINER_APP_ENVIRONMENT" `
     --image "$CR_IMAGE_TAG" `
     --revision-suffix "$tag" `
     --registry-username "$ACR_USERNAME" `
@@ -75,6 +75,6 @@ if (-not [string]::IsNullOrWhiteSpace($CUSTOM_DOMAIN)) {
         --hostname "$CUSTOM_DOMAIN" `
         --resource-group "$RESOURCE_GROUP" `
         --name "$CONTAINER_APP_NAME" `
-        --environment "$CONTAINNER_APP_ENVIRONMENT" `
+        --environment "$CONTAINER_APP_ENVIRONMENT" `
         --validation-method "CNAME"
 }
