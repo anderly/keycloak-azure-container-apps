@@ -39,7 +39,7 @@ az containerapp create \
     --registry-server "$ACR_NAME" \
     --min-replicas "$SCALE_MIN_REPLICAS" \
     --max-replicas "$SCALE_MAX_REPLICAS" \
-    --target-port 8443 \
+    --target-port 8080 \
     --env-vars KC_DB=$KC_DB \
 KC_DB_URL=$KC_DB_URL \
 KC_DB_USERNAME=$KC_DB_USERNAME \

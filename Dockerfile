@@ -20,14 +20,9 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # Configure ports
 #ENV KC_HOSTNAME=localhost
-ENV KC_PROXY=edge
-ENV KC_HTTP_PORT=8443
 ENV KC_HTTP_ENABLED=true
-ENV KC_HOSTNAME_PORT=8443
-ENV KC_HOSTNAME_STRICT_BACKCHANNEL=false
 ENV KC_PROXY_HEADERS=xforwarded
 ENV KC_HOSTNAME_STRICT=false
-ENV KC_HOSTNAME_STRICT_HTTPS=false
 
 # Configure admin user
 #ENV KEYCLOAK_ADMIN=admin
@@ -47,7 +42,8 @@ COPY providers/ /opt/keycloak/providers/
 # Copy custom configuration if needed
 COPY conf/ /opt/keycloak/conf/
 
-EXPOSE 8443
+EXPOSE 8080
+EXPOSE 9000
 
 # Start Keycloak in production mode
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--import-realm"]
